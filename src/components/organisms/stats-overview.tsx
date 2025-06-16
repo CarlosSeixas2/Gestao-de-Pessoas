@@ -7,11 +7,11 @@ interface StatsOverviewProps {
   inactiveUsers: number;
 }
 
-export const StatsOverview: React.FC<StatsOverviewProps> = ({
+export const StatsOverview = ({
   totalUsers,
   activeUsers,
   inactiveUsers,
-}) => {
+}: StatsOverviewProps) => {
   return (
     <div className="grid gap-4 md:grid-cols-3">
       <StatCard

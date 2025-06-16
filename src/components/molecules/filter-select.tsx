@@ -1,6 +1,5 @@
 "use client";
 
-import type React from "react";
 import { Select } from "../atoms/select";
 
 interface FilterSelectProps {
@@ -8,10 +7,7 @@ interface FilterSelectProps {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const FilterSelect: React.FC<FilterSelectProps> = ({
-  value,
-  onChange,
-}) => {
+export const FilterSelect = ({ value, onChange }: FilterSelectProps) => {
   const options = [
     { value: "all", label: "Todos os usuários" },
     { value: "active", label: "Apenas ativos" },

@@ -7,12 +7,12 @@ interface IconButtonProps
   variant?: "default" | "danger";
 }
 
-export const IconButton: React.FC<IconButtonProps> = ({
+export const IconButton = ({
   icon,
   label,
   variant = "default",
   ...props
-}) => {
+}: IconButtonProps) => {
   const variantClasses = {
     default:
       "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500",

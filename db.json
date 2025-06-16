@@ -1,28 +1,28 @@
 {
   "users": [
     {
-      "id": "2",
       "name": "Bruno Oliveira",
-      "email": "bruno@example.com",
-      "status": "inactive"
+      "email": "bruno@gmail.com",
+      "status": "inactive",
+      "id": "2"
     },
     {
-      "id": "3",
       "name": "Carla Mendes",
-      "email": "carla@example.com",
-      "status": "active"
+      "email": "carla@gmail.com",
+      "status": "active",
+      "id": "3"
     },
     {
-      "id": "4",
       "name": "Daniel Souza",
-      "email": "daniel@example.com",
-      "status": "inactive"
+      "email": "daniel@gmail.com",
+      "status": "active",
+      "id": "4"
     },
     {
-      "id": "5",
       "name": "Eduarda Lima",
-      "email": "eduarda@example.com",
-      "status": "active"
+      "email": "eduarda@gmail.com",
+      "status": "inactive",
+      "id": "5"
     }
   ]
 }

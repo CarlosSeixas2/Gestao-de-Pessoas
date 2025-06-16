@@ -1,4 +1,3 @@
-import type React from "react";
 import { Card } from "../atoms/card";
 
 interface StatCardProps {
@@ -8,12 +7,7 @@ interface StatCardProps {
   indicator?: React.ReactNode;
 }
 
-export const StatCard: React.FC<StatCardProps> = ({
-  title,
-  value,
-  icon,
-  indicator,
-}) => {
+export const StatCard = ({ title, value, icon, indicator }: StatCardProps) => {
   return (
     <Card>
       <div className="p-4">

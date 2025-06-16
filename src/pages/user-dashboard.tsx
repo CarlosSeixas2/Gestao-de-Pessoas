@@ -7,11 +7,18 @@ import type { User } from "../interfaces/user";
 import { UserDashboardTemplate } from "../templates/user-dashboard-template";
 
 export function UserDashboard() {
-  const { users, isLoading, deleteUser, createUser } = useUsers();
+  const { users, isLoading, deleteUser, createUser, updateUser } = useUsers();
   const [filter, setFilter] = useState<"all" | "active" | "inactive">("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState<{
+    show: boolean;
+    user: User | null;
+  }>({
+    show: false,
+    user: null,
+  });
+  const [updateConfirm, setUpdateConfirm] = useState<{
     show: boolean;
     user: User | null;
   }>({
@@ -96,8 +103,38 @@ export function UserDashboard() {
     setDeleteConfirm({ show: false, user: null });
   };
 
-  const handleEditUser = (user: User) => {
-    console.log("editar", user);
+  const handleUpdateClick = (user: User) => {
+    setNewUser({
+      name: user.name,
+      email: user.email,
+      status: user.status,
+    });
+    setFormErrors({ name: "", email: "" });
+    setUpdateConfirm({ show: true, user });
+  };
+
+  const handleUpdateConfirm = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (updateConfirm.user && validateForm()) {
+      updateUser.mutate({ id: updateConfirm.user.id, data: newUser });
+      setUpdateConfirm({ show: false, user: null });
+      setNewUser({
+        name: "",
+        email: "",
+        status: "active",
+      });
+      setFormErrors({ name: "", email: "" });
+    }
+  };
+
+  const handleUpdateCancel = () => {
+    setUpdateConfirm({ show: false, user: null });
+    setNewUser({
+      name: "",
+      email: "",
+      status: "active",
+    });
+    setFormErrors({ name: "", email: "" });
   };
 
   return (
@@ -108,6 +145,7 @@ export function UserDashboard() {
       searchTerm={searchTerm}
       isModalOpen={isModalOpen}
       deleteConfirm={deleteConfirm}
+      updateConfirm={updateConfirm}
       newUser={newUser}
       formErrors={formErrors}
       onSearchChange={(e) => setSearchTerm(e.target.value)}
@@ -118,7 +156,9 @@ export function UserDashboard() {
       onModalClose={() => setIsModalOpen(false)}
       onInputChange={handleInputChange}
       onSubmit={handleSubmit}
-      onEditUser={handleEditUser}
+      onUpdateClick={handleUpdateClick}
+      onUpdateConfirm={handleUpdateConfirm}
+      onUpdateCancel={handleUpdateCancel}
       onDeleteClick={handleDeleteClick}
       onDeleteConfirm={handleDeleteConfirm}
       onDeleteCancel={handleDeleteCancel}

@@ -1,14 +1,15 @@
 "use client";
 
 import type React from "react";
-import type { User } from "../interfaces/user";
 import { LoadingSkeletonDashboard } from "../components/organisms/loading-skeleton-dashboard";
 import { AddUserButton } from "../components/molecules/add-user-button";
 import { StatsOverview } from "../components/organisms/stats-overview";
 import { FilterSection } from "../components/organisms/filter-section";
 import { UserTable } from "../components/organisms/user-table";
 import { AddUserModal } from "../components/organisms/add-user-modal";
-import { DeleteConfirmModal } from "../components/organisms/delete-confirm-modal";
+import { UpdateUserModal } from "../components/organisms/update-user-modal";
+import type { User } from "../interfaces/user";
+import { DeleteUserModal } from "../components/organisms/delete-user-modal";
 
 interface UserDashboardTemplateProps {
   users: User[];
@@ -17,6 +18,10 @@ interface UserDashboardTemplateProps {
   searchTerm: string;
   isModalOpen: boolean;
   deleteConfirm: {
+    show: boolean;
+    user: User | null;
+  };
+  updateConfirm: {
     show: boolean;
     user: User | null;
   };
@@ -37,19 +42,22 @@ interface UserDashboardTemplateProps {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
   onSubmit: (e: React.FormEvent) => void;
-  onEditUser: (user: User) => void;
+  onUpdateClick: (user: User) => void;
+  onUpdateConfirm: (e: React.FormEvent) => void;
+  onUpdateCancel: () => void;
   onDeleteClick: (user: User) => void;
   onDeleteConfirm: () => void;
   onDeleteCancel: () => void;
 }
 
-export const UserDashboardTemplate: React.FC<UserDashboardTemplateProps> = ({
+export const UserDashboardTemplate = ({
   users,
   isLoading,
   filter,
   searchTerm,
   isModalOpen,
   deleteConfirm,
+  updateConfirm,
   newUser,
   formErrors,
   onSearchChange,
@@ -58,11 +66,13 @@ export const UserDashboardTemplate: React.FC<UserDashboardTemplateProps> = ({
   onModalClose,
   onInputChange,
   onSubmit,
-  onEditUser,
+  onUpdateClick,
+  onUpdateConfirm,
+  onUpdateCancel,
   onDeleteClick,
   onDeleteConfirm,
   onDeleteCancel,
-}) => {
+}: UserDashboardTemplateProps) => {
   if (isLoading) {
     return <LoadingSkeletonDashboard />;
   }
@@ -109,7 +119,7 @@ export const UserDashboardTemplate: React.FC<UserDashboardTemplateProps> = ({
 
       <UserTable
         users={filteredUsers}
-        onEdit={onEditUser}
+        onEdit={onUpdateClick}
         onDelete={onDeleteClick}
       />
 
@@ -122,11 +132,20 @@ export const UserDashboardTemplate: React.FC<UserDashboardTemplateProps> = ({
         onSubmit={onSubmit}
       />
 
-      <DeleteConfirmModal
+      <DeleteUserModal
         isOpen={deleteConfirm.show}
         user={deleteConfirm.user}
         onConfirm={onDeleteConfirm}
         onCancel={onDeleteCancel}
+      />
+
+      <UpdateUserModal
+        isOpen={updateConfirm.show}
+        onClose={onUpdateCancel}
+        formData={newUser}
+        formErrors={formErrors}
+        onChange={onInputChange}
+        onSubmit={onUpdateConfirm}
       />
     </div>
   );

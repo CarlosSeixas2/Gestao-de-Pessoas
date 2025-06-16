@@ -12,12 +12,12 @@ interface FilterSectionProps {
   onFilterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const FilterSection: React.FC<FilterSectionProps> = ({
+export const FilterSection = ({
   searchTerm,
   onSearchChange,
   filter,
   onFilterChange,
-}) => {
+}: FilterSectionProps) => {
   return (
     <Card>
       <CardHeader>
@@ -41,7 +41,7 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
         </p>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
           <SearchInput
             value={searchTerm}
             onChange={onSearchChange}

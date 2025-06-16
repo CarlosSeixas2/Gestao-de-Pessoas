@@ -1,18 +1,15 @@
 "use client";
-
-import type React from "react";
-
 interface SearchInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({
+export const SearchInput = ({
   value,
   onChange,
   placeholder = "Search...",
-}) => {
+}: SearchInputProps) => {
   return (
     <div className="relative flex-1">
       <svg

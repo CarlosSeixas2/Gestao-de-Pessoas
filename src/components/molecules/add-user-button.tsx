@@ -1,13 +1,12 @@
 "use client";
 
-import type React from "react";
 import { Button } from "../atoms/button";
 
 interface AddUserButtonProps {
   onClick: () => void;
 }
 
-export const AddUserButton: React.FC<AddUserButtonProps> = ({ onClick }) => {
+export const AddUserButton = ({ onClick }: AddUserButtonProps) => {
   return (
     <Button onClick={onClick}>
       <svg

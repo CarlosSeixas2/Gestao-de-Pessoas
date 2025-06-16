@@ -6,7 +6,7 @@ import { Input } from "../atoms/input";
 import { Select } from "../atoms/select";
 import { User } from "lucide-react";
 
-interface AddUserModalProps {
+interface UpdateUserModalProps {
   isOpen: boolean;
   onClose: () => void;
   formData: {
@@ -24,14 +24,14 @@ interface AddUserModalProps {
   onSubmit: (e: React.FormEvent) => void;
 }
 
-export const AddUserModal = ({
+export const UpdateUserModal = ({
   isOpen,
   onClose,
   formData,
   formErrors,
   onChange,
   onSubmit,
-}: AddUserModalProps) => {
+}: UpdateUserModalProps) => {
   if (!isOpen) return null;
 
   return (
@@ -46,7 +46,7 @@ export const AddUserModal = ({
               <User color="blue" className="h-8 w-8" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mt-4">
-              Adicionar Novo Usuário
+              Editar Usuário
             </h3>
           </div>
           <div className="mt-6 w-full">
@@ -90,7 +90,7 @@ export const AddUserModal = ({
             onClick={onSubmit}
             className="w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200"
           >
-            Adicionar
+            Salvar
           </Button>
           <Button
             variant="secondary"

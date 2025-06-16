@@ -1,16 +1,14 @@
-import type React from "react";
-
 interface LoadingSkeletonProps {
   width?: string;
   height?: string;
   className?: string;
 }
 
-export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
+export const LoadingSkeleton = ({
   width,
   height,
   className = "",
-}) => {
+}: LoadingSkeletonProps) => {
   return (
     <div
       className={`bg-gray-200 rounded animate-pulse ${className}`}

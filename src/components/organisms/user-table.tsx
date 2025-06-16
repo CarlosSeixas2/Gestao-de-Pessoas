@@ -1,6 +1,4 @@
 "use client";
-
-import type React from "react";
 import { Card, CardHeader, CardContent } from "../atoms/card";
 import { Badge } from "../atoms/badge";
 import { IconButton } from "../atoms/icon-button";
@@ -12,11 +10,7 @@ interface UserTableProps {
   onDelete: (user: User) => void;
 }
 
-export const UserTable: React.FC<UserTableProps> = ({
-  users,
-  onEdit,
-  onDelete,
-}) => {
+export const UserTable = ({ users, onEdit, onDelete }: UserTableProps) => {
   return (
     <Card>
       <CardHeader>
