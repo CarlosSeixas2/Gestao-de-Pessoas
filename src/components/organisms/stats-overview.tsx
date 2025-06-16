@@ -1,4 +1,3 @@
-import type React from "react";
 import { StatCard } from "../molecules/stat-card";
 
 interface StatsOverviewProps {
