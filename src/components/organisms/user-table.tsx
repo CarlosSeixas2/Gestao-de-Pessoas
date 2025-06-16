@@ -1,4 +1,3 @@
-"use client";
 import { Card, CardHeader, CardContent } from "../atoms/card";
 import { Badge } from "../atoms/badge";
 import { IconButton } from "../atoms/icon-button";

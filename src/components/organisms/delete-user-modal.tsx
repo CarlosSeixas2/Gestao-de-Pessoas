@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "../atoms/button";
 import type { User } from "../../interfaces/user";
 import { Trash2 } from "lucide-react";

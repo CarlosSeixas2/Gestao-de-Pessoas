@@ -1,5 +1,3 @@
-import type React from "react";
-
 type ButtonVariant = "primary" | "secondary" | "danger";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

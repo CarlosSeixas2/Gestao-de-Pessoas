@@ -1,6 +1,3 @@
-"use client";
-
-import type React from "react";
 import { useState } from "react";
 import { useUsers } from "../hooks/use-users";
 import type { User } from "../interfaces/user";

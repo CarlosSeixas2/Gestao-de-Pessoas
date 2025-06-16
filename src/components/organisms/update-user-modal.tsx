@@ -1,6 +1,3 @@
-"use client";
-
-import type React from "react";
 import { Button } from "../atoms/button";
 import { Input } from "../atoms/input";
 import { Select } from "../atoms/select";

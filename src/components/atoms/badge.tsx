@@ -1,5 +1,3 @@
-import type React from "react";
-
 interface BadgeProps {
   status: "active" | "inactive";
   children: React.ReactNode;

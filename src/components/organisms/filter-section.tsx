@@ -1,6 +1,3 @@
-"use client";
-
-import type React from "react";
 import { Card, CardHeader, CardContent } from "../atoms/card";
 import { SearchInput } from "../molecules/search-input";
 import { FilterSelect } from "../molecules/filter-select";

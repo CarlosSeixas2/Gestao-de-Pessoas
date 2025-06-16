@@ -1,6 +1,3 @@
-"use client";
-
-import type React from "react";
 import { LoadingSkeletonDashboard } from "../components/organisms/loading-skeleton-dashboard";
 import { AddUserButton } from "../components/molecules/add-user-button";
 import { StatsOverview } from "../components/organisms/stats-overview";
