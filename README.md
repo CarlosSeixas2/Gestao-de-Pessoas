@@ -1,4 +1,4 @@
-# 🚀 Desafio Técnico - Desenvolvedor Pleno (React + TypeScript)
+# 🚀 Desafio Técnico
 
 ## 🧠 Objetivo
 
